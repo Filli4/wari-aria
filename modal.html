@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        
+
+        .modal.open,
+        .overlay.open {
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            padding: 0.5rem;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            background: white;
+            border-radius: 0.25rem;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <button data-open-modal>Open</button>
+
+    <div data-overlay class="overlay"></div>
+
+    <div data-modal class="modal" role="alertdialog" aria-modal="true" aria-labelledby="dialogLabel"
+        aria-describedby="dialogDesc">
+        <h2 id="dialogLabel">This is a Modal</h2>
+        <div role="paragraph" id="dialogDesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius quae, non recusandae voluptas, adipisci exercitationem rerum dolores facere pariatur eos fugiat ut molestiae quidem saepe ea dicta error, incidunt quia.</div>
+
+        <button type="button" data-close-modal>Close</button>
+    </div>
+
+    <script>
+        const openBtn = document.querySelector("[data-open-modal]");
+        const closeBtn = document.querySelector("[data-close-modal]");
+        const modal = document.querySelector("[data-modal]");
+        const overlay = document.querySelector("[data-overlay]");
+
+        openBtn.addEventListener("click", () => {
+            modal.classList.add("open");
+            overlay.classList.add("open");
+            closeBtn.focus();
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("open");
+            overlay.classList.remove("open");
+            openBtn.focus();
+        });
+    </script>
+</body>
+
+</html>

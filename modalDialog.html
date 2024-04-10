@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width='device-width', initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <button data-open-modal>Open Modal</button>
+        <dialog id="accessibleDialog" aria-labelledby="dialogLabel" aria-describedby="dialogDesc">
+            <h2 id="dialogLabel">Modal Dialog</h2>
+
+            <div id="dialogDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, inventore quod amet sequi aliquid eius quisquam ipsa cum iste eum, perferendis sit repellat accusantium non deserunt ipsam debitis, laudantium sed!</div>
+
+            <button id="closeDialogBtn">Close</button>
+        </dialog>
+    </main>
+    <script>
+        const openBtn = document.querySelector("[data-open-modal]"); //connect by attribute
+        const closeBtn = document.querySelector("#closeDialogBtn");
+        const modal = document.querySelector("#accessibleDialog");
+
+        openBtn.addEventListener("click", () => {
+            modal.showModal();
+            modal.setAttribute("aria-modal", "true"); /* add Aria attribute */
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.close();
+            modal.removeAttribute(
+                "aria-modal",
+                "false"
+            ); /* removing Aria attribute */
+        });
+    </script>
+</body>
+
+</html>

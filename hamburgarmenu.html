@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .show-menu-list {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="menuButton" aria-expanded="false" aria-label="Menu" onclick="showMenu()">
+        Meny
+    </button>
+    <nav id="menuContent" aria-label="Main">
+        <ul id="itemList" aria-hidden="true">
+            <li><a href="#">Hem</a></li>
+            <li><a href="#">Om oss</a></li>
+            <li><a href="#">Tjänster</a></li>
+            <li><a href="#">Kontakt</a></li>
+        </ul>
+    </nav>
+    <script>
+        function showMenu() {
+            var el = document.getElementById("itemList");
+            el.classList.toggle("show-menu-list");
+        }
+    </script>
+</body>
+
+</html>
